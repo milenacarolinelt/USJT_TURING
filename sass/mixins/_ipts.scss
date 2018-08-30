@@ -1,0 +1,119 @@
+//-------------------------------------------
+// Arquivo dos mixins construtores do INPUT -
+//-------------------------------------------
+// Determina a altura dos inputs
+$ipt--lh: 40px;
+// Padding-left/right dos inputs
+$ipt--padd: $ipt--lh/2 !default;
+// Borda dos inputs
+$ipt--border: 2px;
+$ipt--border--color: #ccc;
+$ipt--border--error: #f54f54;
+$ipt--border--valid:  #4caf50;
+// Determina se possui borda arredondada
+$ipt--border-radius: 3px;
+// msg de erro dos inputs
+$ipt-error--size: 12px;
+$ipt-error--mt: 5px;
+// Bora dos Btns
+$ipt--border--btn: 0px;
+$ipt--border--btn-color: #333;
+// Cores padrões do btn
+$btn--color: #e0e0e0;
+$btn--bgc: #673ab7;
+
+@mixin input(){
+    // mixin básico de construção de inputs genéricos
+
+    &{
+        padding: 0 $ipt--padd;
+        line-height: $ipt--lh;
+        height: $ipt--lh;
+        box-sizing: border-box;
+
+        @if $ipt--border > 1px{
+            border: 1px solid $ipt--border--color;
+        }
+
+        @if $ipt--border-radius > 1px{
+            border-radius: $ipt--border-radius;
+        }
+
+        &:focus{
+            outline: 3px rgba( 0,0,0,0.1 ) solid;
+        }
+
+        &:disabled{
+            background-color: #efefef;
+        }
+    }
+
+    &.-is-invalid{
+        border-color: $ipt--border--error;
+        color: $ipt--border--error;
+
+        &::placeholder{
+            color: $ipt--border--error;
+            opacity: 1;
+        }
+    }
+
+    &.-is-valid{
+        border-color: $ipt--border--valid;
+        color: $ipt--border--valid;
+
+        &::placeholder{
+            color: $ipt--border--valid;
+            opacity: 1;
+        }
+    }
+
+}
+
+
+@mixin input_errors(){
+    // o elemento que receber esse mixin deve ter um data-error com a msg
+
+    &::after{
+        margin: $ipt-error--mt 0;
+        height: $ipt-error--size;
+        display: block;
+        content: attr(data-error);
+        font-size: $ipt-error--size;
+        color: $ipt--border--error;
+    }
+
+}
+
+
+@mixin input_btn( $mod: false ){
+    &{
+        position: relative;
+        vertical-align: middle;
+        display: inline-block;
+        height: $ipt--lh;
+        box-sizing: border-box;
+        padding: 0 $ipt--padd; 
+        line-height: #{$ipt--lh - $ipt--border};
+        color: $btn--color;
+        background: $btn--bgc;
+        text-decoration: none;
+
+        @if $ipt--border--btn >= 1px {
+            border: $ipt--border--btn solid $ipt--border--btn-color;
+        }@else{
+            border: 0;
+        }
+
+        @if $ipt--border-radius >= 1px {
+            border-radius: $ipt--border-radius;
+        }
+
+        &:disabled{
+            background-color: #efefef;
+            color: #bfbfbf;
+        }
+
+    }
+
+}

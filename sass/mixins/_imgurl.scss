@@ -1,0 +1,16 @@
+//-----------------------------------
+// imgurl
+// 
+// Função que retorna o diretório correto das imagems do projeto
+//
+//  Exemplo de uso:
+//  background: imgurl( 'cachorro.png' ) center center no-repeat;
+
+@function imgurl ( $img, $folder: '' ){
+    
+    @if $folder != '' {
+        // caso receba paremetro folter adiciona na construcao da url
+        $folder: $folder + '/'
+    }
+    @return  ( url( '../images/' + $folder + $img  ) );
+}

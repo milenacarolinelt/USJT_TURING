@@ -1,0 +1,22 @@
+// Mixin para estilizar a primeira letra de um elemento
+@mixin first-letter( $size , $line-height, $color ){
+
+    // Config
+    $margin--right: 10px;
+
+
+    &::first-letter{
+        // Positioning
+        float: left;
+        margin-right: $margin--right;
+        // Box-model
+        // Visibility
+        // Typography
+        color: $color;
+        font-size: $size;
+        line-height: $line-height;
+        font-weight: bold;
+        // Visual
+        // Misc
+    }
+}

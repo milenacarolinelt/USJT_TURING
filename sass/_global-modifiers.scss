@@ -1,0 +1,65 @@
+//--------------------------------------------------
+// Hidden 
+// Esconde os elementos com display None
+//--------------------------------------------------
+.-hide{
+    &,
+    &--mob,
+    &--tab-p,
+    &--lap{
+        display: none;
+    }
+    &--mob{
+        @include tablet-p{
+            display: block;
+        }
+    }
+    &--tab-p{
+        @include tablet-l{
+            display: block;
+        }
+    }
+    &--lap{
+        @include laptop{
+            display: block;
+        }
+    }
+}
+
+//-----------------------------------------------------
+// Except
+// Esconde os elementos exceto em uma determinada tela
+//-----------------------------------------------------
+.-except{
+    &--mob{
+        @include tablet-p{
+            display: none;
+        }
+    }
+    &--tab-p,
+    &--tab-l,
+    &--desk{
+        display: none;
+    }
+    &--tab-p{
+        @include tablet-p{
+            display: block;
+        }
+        @include tablet-l{
+            display: none;
+        }
+    }
+    &--tab-l{
+        @include tablet-l{
+            display: block;
+        }
+        @include laptop{
+            display: none;
+        }
+    }
+    &--desk{
+        @include laptop{
+            display: block;
+        }
+    }
+}
