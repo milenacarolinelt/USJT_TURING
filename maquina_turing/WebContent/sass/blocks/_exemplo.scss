@@ -1,0 +1,116 @@
+//-----------------------------------
+// BLOCK
+//-----------------------------------
+// Descrição:
+// Componente de exemplo, não adicione ao blocks.scss
+//
+
+
+
+.block{
+  // Vars
+  $pimary-color: $brand;
+  $bgc-color:  !default;
+  $p-size:     !default;
+  $text-color:    !default;
+  $title-size:      $h2;
+
+
+  &{
+    // Posicionamento 
+    padding: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 40px;
+    // Molde 
+    display: block;
+    padding: 100px 50px;
+    // Tipografia 
+    font: #{$p-size}/1.2 'verdana, sans-serif';
+    letter-spacing: 0.5;
+    // Visual 
+    color: $pimary-color;
+    background-color: $bgc-color;
+    // Comprotamental
+    transition: all 0.4s ease-out;
+
+
+    // MODIFICADOR
+    &.-is-active{
+      border: 2px solid red;
+    }
+
+
+    // MQUERYs
+    @include tablet-p{
+
+    }
+
+    @include tablet-l{
+
+    }
+
+    @include laptop{
+
+    }
+
+    @include desktop{
+
+    }
+  }
+
+}
+
+
+.block__element{
+  // Regras dos elementos FILHOS deste bloco
+  font: #{$p-size}/1.2 'verdana, sans-serif';
+  color: $text-color;
+
+
+  // MODIFICADOR
+  &.-is-hidden{
+    //Variações de estado do FILHO
+  }
+
+}
+
+
+//-----------------------------------
+// VARIAÇÕES
+//-----------------------------------
+
+.block--variant{
+  // Vars
+  $pimary-color: $blue;
+  // Extends
+  @extend .block;
+
+
+  &{
+    // propriedades diferentes do Pai
+    background-color: $pimary-color;
+
+
+    // MODIFICADOR
+    &.-is-active{
+      
+    }
+
+
+  }
+
+  &__element{
+    // proprierades diferentes do filho
+
+
+
+    // MODIFICADOR
+    &.-is-hidden{
+      //Variações de estado do FILHO
+    }
+  }
+
+}
